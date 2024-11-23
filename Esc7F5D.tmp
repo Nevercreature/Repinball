@@ -1,0 +1,266 @@
+[gd_scene load_steps=15 format=3 uid="uid://b2g2g5qs5u3uq"]
+
+[ext_resource type="Script" path="res://Scripts/controlador.gd" id="1_oo0au"]
+[ext_resource type="Script" path="res://camera_2d.gd" id="1_qkg2u"]
+[ext_resource type="Texture2D" uid="uid://bm4kwwkirshft" path="res://SpritesEImagenes/Background_000.PNG" id="1_t2ft1"]
+[ext_resource type="Texture2D" uid="uid://lolh22xcckyx" path="res://SpritesEImagenes/Foreground_001.png" id="2_8ty5o"]
+[ext_resource type="Texture2D" uid="uid://3a8mk86f3bpl" path="res://SpritesEImagenes/Flippers_back.PNG" id="3_jojq8"]
+[ext_resource type="FontFile" uid="uid://c7rqtbmpr30o1" path="res://Fuentes/PixelizadaNumpeq.ttf" id="3_ueaf0"]
+[ext_resource type="PhysicsMaterial" uid="uid://pg8xofhxdbpf" path="res://Materiales/MaterialBola.tres" id="3_xnwj3"]
+[ext_resource type="PackedScene" uid="uid://c6oopqspos50b" path="res://Bola.tscn" id="4_dibcs"]
+[ext_resource type="Texture2D" uid="uid://0m23qcwv2kts" path="res://SpritesEImagenes/Flippers_front.PNG" id="4_s8e72"]
+[ext_resource type="PackedScene" uid="uid://xr5nkxp270v6" path="res://FLipperIzq.tscn" id="6_3508n"]
+[ext_resource type="Texture2D" uid="uid://bjplico4lqvd0" path="res://SpritesEImagenes/Ball.PNG" id="9_2qdne"]
+[ext_resource type="PackedScene" uid="uid://cp6dxvnydoowu" path="res://moneda.tscn" id="10_h5ipg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bfxin"]
+size = Vector2(46, 376)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_scp5n"]
+resource_local_to_scene = true
+friction = 0.02
+bounce = 0.2
+
+[node name="Node2D" type="Node"]
+
+[node name="Controlador" type="Node" parent="."]
+script = ExtResource("1_oo0au")
+
+[node name="Pinball" type="Node2D" parent="."]
+
+[node name="Fondo" type="Node2D" parent="Pinball"]
+
+[node name="FondoSprite" type="Sprite2D" parent="Pinball/Fondo"]
+texture_filter = 3
+texture = ExtResource("1_t2ft1")
+
+[node name="Paredes" type="Node2D" parent="Pinball"]
+z_index = 10
+texture_filter = 3
+position = Vector2(0, -1)
+
+[node name="ParedesSprite" type="Sprite2D" parent="Pinball/Paredes"]
+texture = ExtResource("2_8ty5o")
+
+[node name="Paredes" type="StaticBody2D" parent="Pinball/Paredes"]
+physics_interpolation_mode = 1
+z_index = 10
+texture_filter = 3
+disable_mode = 1
+physics_material_override = ExtResource("3_xnwj3")
+
+[node name="ParteInferiorIzq" type="CollisionPolygon2D" parent="Pinball/Paredes/Paredes"]
+position = Vector2(-75.1317, 285.254)
+scale = Vector2(10.3101, 7.95899)
+build_mode = 1
+polygon = PackedVector2Array(-16.5729, -14.6066, -16.5729, -13.4758, -16.5729, -13.3502, -16.4759, -13.0989, -16.3789, -12.9732, -16.2819, -12.8476, -16.0879, -12.722, -15.8939, -12.5963, 1.46766, -5.05767, 1.46765, -5.05767, 1.07968, -4.80638, 0.8857, -4.42945, 0.691716, -3.92687, 0.8857, -2.79607, 1.27367, -2.41914, 1.66164, -2.16785, 1.66164, 3.73742, -21.0345, 3.73742, -21.0345, -14.9836, -16.5729, -14.9836)
+
+[node name="ParteInferiorDer" type="CollisionPolygon2D" parent="Pinball/Paredes/Paredes"]
+position = Vector2(75.132, 285.254)
+scale = Vector2(10.31, 7.959)
+polygon = PackedVector2Array(16.573, -14.607, 16.573, -13.476, 16.573, -13.35, 16.476, -13.099, 16.379, -12.973, 16.282, -12.848, 16.088, -12.722, 15.894, -12.596, -1.4677, -5.05767, -1.468, -5.058, -1.08, -4.806, -0.886, -4.429, -0.692, -3.927, -0.886, -2.796, -1.274, -2.419, -1.662, -2.168, -1.662, 3.737, 21.035, 3.737, 21.035, -14.984, 16.573, -14.984)
+
+[node name="LateralIzquierdo" type="CollisionShape2D" parent="Pinball/Paredes/Paredes"]
+position = Vector2(-269, -17)
+shape = SubResource("RectangleShape2D_bfxin")
+
+[node name="LateralDerecho" type="CollisionShape2D" parent="Pinball/Paredes/Paredes"]
+position = Vector2(269, -17)
+scale = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_bfxin")
+
+[node name="ParteSuperiorIzq" type="CollisionPolygon2D" parent="Pinball/Paredes/Paredes"]
+build_mode = 1
+polygon = PackedVector2Array(-245, -159, -244, -181, -242, -191, -238, -200, -233, -210, -227, -219, -219, -228, -208, -237, -196, -245, -182, -250, -165, -254, 54, -254, 54, -297, -292, -297, -292, -159)
+
+[node name="ParteSuperiorDer" type="CollisionPolygon2D" parent="Pinball/Paredes/Paredes"]
+scale = Vector2(-1, 1)
+build_mode = 1
+polygon = PackedVector2Array(-245, -159, -244, -181, -242, -191, -238, -200, -233, -210, -227, -219, -219, -228, -208, -237, -196, -245, -182, -250, -165, -254, 54, -254, 54, -297, -292, -297, -292, -159)
+
+[node name="FlipperIzquierdoTraseroSprite" type="Node2D" parent="Pinball"]
+visible = false
+texture_filter = 3
+position = Vector2(-2.5, 1.5)
+
+[node name="FlipperSprite" type="Sprite2D" parent="Pinball/FlipperIzquierdoTraseroSprite"]
+position = Vector2(-37, 234)
+texture = ExtResource("3_jojq8")
+flip_h = true
+hframes = 4
+vframes = 2
+
+[node name="FlipperIzquierdoDelanteroSprite2" type="Node2D" parent="Pinball"]
+visible = false
+z_index = 6
+texture_filter = 3
+position = Vector2(2.5, 1.5)
+
+[node name="FlipperSprite" type="Sprite2D" parent="Pinball/FlipperIzquierdoDelanteroSprite2"]
+position = Vector2(-37, 234)
+texture = ExtResource("4_s8e72")
+flip_h = true
+hframes = 4
+vframes = 2
+
+[node name="FlipperIzq" parent="Pinball" instance=ExtResource("6_3508n")]
+position = Vector2(-58, 255)
+
+[node name="FlipperDer" parent="Pinball" instance=ExtResource("6_3508n")]
+position = Vector2(58, 255)
+scale = Vector2(-1, 1)
+
+[node name="Bola" parent="Pinball" instance=ExtResource("4_dibcs")]
+unique_name_in_owner = true
+z_index = 2
+position = Vector2(-136, 101)
+physics_material_override = SubResource("PhysicsMaterial_scp5n")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ButtonIzq" type="TouchScreenButton" parent="Control"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(-1392, -658)
+scale = Vector2(32.9524, 56.1429)
+texture_normal = ExtResource("9_2qdne")
+passby_press = true
+action = "ui_left"
+
+[node name="ButtonDer" type="TouchScreenButton" parent="Control"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(5, -484)
+scale = Vector2(37.5476, 46)
+texture_normal = ExtResource("9_2qdne")
+passby_press = true
+action = "ui_right"
+
+[node name="Moneda_01" parent="." instance=ExtResource("10_h5ipg")]
+position = Vector2(-48, -16)
+
+[node name="Moneda_02" parent="." instance=ExtResource("10_h5ipg")]
+position = Vector2(-16, -16)
+
+[node name="Moneda_03" parent="." instance=ExtResource("10_h5ipg")]
+position = Vector2(16, -16)
+
+[node name="Moneda_04" parent="." instance=ExtResource("10_h5ipg")]
+position = Vector2(48, -16)
+
+[node name="Moneda_05" parent="." instance=ExtResource("10_h5ipg")]
+position = Vector2(-48, 16)
+
+[node name="Moneda_06" parent="." instance=ExtResource("10_h5ipg")]
+position = Vector2(-16, 16)
+
+[node name="Moneda_07" parent="." instance=ExtResource("10_h5ipg")]
+position = Vector2(16, 16)
+
+[node name="Moneda_08" parent="." instance=ExtResource("10_h5ipg")]
+position = Vector2(48, 16)
+
+[node name="Moneda_09" parent="." instance=ExtResource("10_h5ipg")]
+position = Vector2(-48, 48)
+
+[node name="Moneda_10" parent="." instance=ExtResource("10_h5ipg")]
+position = Vector2(-16, 48)
+
+[node name="Moneda_11" parent="." instance=ExtResource("10_h5ipg")]
+position = Vector2(16, 48)
+
+[node name="Moneda_12" parent="." instance=ExtResource("10_h5ipg")]
+position = Vector2(48, 48)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Puntos" type="Label" parent="CanvasLayer"]
+z_index = 55
+y_sort_enabled = true
+texture_filter = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -32.0
+offset_right = 168.0
+grow_vertical = 0
+pivot_offset = Vector2(-8, 32)
+theme_override_fonts/font = ExtResource("3_ueaf0")
+theme_override_font_sizes/font_size = 32
+text = "00"
+metadata/_edit_use_anchors_ = true
+
+[node name="PuntosSombra" type="Label" parent="CanvasLayer/Puntos"]
+self_modulate = Color(0, 0, 0, 1)
+z_index = -1
+texture_filter = 3
+layout_mode = 0
+offset_left = -1.0
+offset_right = 159.0
+offset_bottom = 32.0
+pivot_offset = Vector2(-8, 32)
+theme_override_fonts/font = ExtResource("3_ueaf0")
+theme_override_font_sizes/font_size = 32
+text = "00"
+
+[node name="PuntosSombra2" type="Label" parent="CanvasLayer/Puntos"]
+self_modulate = Color(0, 0, 0, 1)
+z_index = -1
+texture_filter = 3
+layout_mode = 0
+offset_left = 1.0
+offset_right = 161.0
+offset_bottom = 32.0
+pivot_offset = Vector2(-8, 32)
+theme_override_fonts/font = ExtResource("3_ueaf0")
+theme_override_font_sizes/font_size = 32
+text = "00"
+
+[node name="PuntosSombra3" type="Label" parent="CanvasLayer/Puntos"]
+self_modulate = Color(0, 0, 0, 1)
+z_index = -1
+texture_filter = 3
+layout_mode = 0
+offset_top = -1.0
+offset_right = 160.0
+offset_bottom = 31.0
+pivot_offset = Vector2(-8, 32)
+theme_override_fonts/font = ExtResource("3_ueaf0")
+theme_override_font_sizes/font_size = 32
+text = "00"
+
+[node name="PuntosSombra4" type="Label" parent="CanvasLayer/Puntos"]
+self_modulate = Color(0, 0, 0, 1)
+z_index = -1
+texture_filter = 3
+layout_mode = 0
+offset_top = 1.0
+offset_right = 160.0
+offset_bottom = 33.0
+pivot_offset = Vector2(-8, 32)
+theme_override_fonts/font = ExtResource("3_ueaf0")
+theme_override_font_sizes/font_size = 32
+text = "00"
+
+[node name="PuntosSombra5" type="Label" parent="CanvasLayer/Puntos"]
+self_modulate = Color(0, 0, 0, 1)
+z_index = -1
+texture_filter = 3
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 163.0
+offset_bottom = 35.0
+pivot_offset = Vector2(-8, 32)
+theme_override_fonts/font = ExtResource("3_ueaf0")
+theme_override_font_sizes/font_size = 32
+text = "00"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+z_index = 65
+script = ExtResource("1_qkg2u")

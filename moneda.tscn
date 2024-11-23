@@ -1,0 +1,94 @@
+[gd_scene load_steps=14 format=3 uid="uid://cp6dxvnydoowu"]
+
+[ext_resource type="Texture2D" uid="uid://wjqx6i40t6b5" path="res://SpritesEImagenes/Moneda_Sombra.png" id="1_1hfd6"]
+[ext_resource type="Script" path="res://Scripts/moneda.gd" id="1_slkw4"]
+[ext_resource type="Texture2D" uid="uid://b4jqxsxa8e76p" path="res://SpritesEImagenes/Moneda_.png" id="2_jthpl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avfem"]
+atlas = ExtResource("2_jthpl")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnmiq"]
+atlas = ExtResource("2_jthpl")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhrdl"]
+atlas = ExtResource("2_jthpl")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ke6cd"]
+atlas = ExtResource("2_jthpl")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1yjyt"]
+atlas = ExtResource("2_jthpl")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxbok"]
+atlas = ExtResource("2_jthpl")
+region = Rect2(0, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tltec"]
+atlas = ExtResource("2_jthpl")
+region = Rect2(0, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5vlt"]
+atlas = ExtResource("2_jthpl")
+region = Rect2(0, 224, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7bape"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avfem")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnmiq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhrdl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ke6cd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1yjyt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wxbok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tltec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5vlt")
+}],
+"loop": true,
+"name": &"MonedaGirando",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_35las"]
+
+[node name="Moneda" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_slkw4")
+
+[node name="Sombra" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.313726)
+texture_filter = 3
+texture = ExtResource("1_1hfd6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 3
+position = Vector2(0, -6)
+sprite_frames = SubResource("SpriteFrames_7bape")
+animation = &"MonedaGirando"
+autoplay = "MonedaGirando"
+frame_progress = 0.213564
+
+[node name="AreaMoneda" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_35las")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

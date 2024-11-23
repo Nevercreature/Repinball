@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6oopqspos50b"]
+
+[ext_resource type="Texture2D" uid="uid://bjplico4lqvd0" path="res://SpritesEImagenes/Ball.PNG" id="1_k5fg3"]
+[ext_resource type="Script" path="res://Scripts/ScriptBola.gd" id="2_l0h21"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tq5ii"]
+radius = 9.5
+
+[node name="Bola" type="CharacterBody2D"]
+physics_interpolation_mode = 1
+position = Vector2(-1, -7.65)
+disable_mode = 2
+script = ExtResource("2_l0h21")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+physics_interpolation_mode = 1
+shape = SubResource("CircleShape2D_tq5ii")
+debug_color = Color(0.802764, 0, 0.166866, 0.42)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture_filter = 3
+texture = ExtResource("1_k5fg3")
+hframes = 2
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+physics_interpolation_mode = 1
+shape = SubResource("CircleShape2D_tq5ii")
+debug_color = Color(0.802764, 0, 0.166866, 0.42)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

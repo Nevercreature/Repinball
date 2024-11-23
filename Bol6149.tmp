@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6oopqspos50b"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://pg8xofhxdbpf" path="res://Materiales/MaterialBola.tres" id="1_cyvuk"]
+[ext_resource type="Texture2D" uid="uid://bjplico4lqvd0" path="res://SpritesEImagenes/Ball.PNG" id="1_k5fg3"]
+[ext_resource type="Script" path="res://Scripts/ScriptBola.gd" id="2_l0h21"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xp61a"]
+radius = 9.5
+
+[node name="Bola" type="Node2D"]
+physics_interpolation_mode = 1
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+physics_interpolation_mode = 1
+disable_mode = 2
+mass = 0.1
+physics_material_override = ExtResource("1_cyvuk")
+can_sleep = false
+lock_rotation = true
+continuous_cd = 2
+constant_force = Vector2(0.325, 0)
+script = ExtResource("2_l0h21")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+physics_interpolation_mode = 1
+shape = SubResource("CircleShape2D_xp61a")
+debug_color = Color(0.802764, 0, 0.166866, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+texture_filter = 3
+texture = ExtResource("1_k5fg3")
+hframes = 2

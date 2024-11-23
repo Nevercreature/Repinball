@@ -1,0 +1,84 @@
+[gd_scene load_steps=10 format=3 uid="uid://xr5nkxp270v6"]
+
+[ext_resource type="Texture2D" uid="uid://3a8mk86f3bpl" path="res://SpritesEImagenes/Flippers_back.PNG" id="1_d60lf"]
+[ext_resource type="Script" path="res://flipper_izquierdo_trasero_fisico.gd" id="2_0cycm"]
+[ext_resource type="Texture2D" uid="uid://c3bngkgv4i3p3" path="res://SpritesEImagenes/Flippers_back_.PNG" id="2_bxpnl"]
+[ext_resource type="Script" path="res://Scripts/sprite(trasero_sombra).gd" id="3_bowsa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x73pp"]
+radius = 11.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y3eo6"]
+radius = 5.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yoymy"]
+size = Vector2(6.10498, 46.6858)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sqv8f"]
+size = Vector2(48, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fdk2u"]
+size = Vector2(33.0682, 10.1294)
+
+[node name="FlipperIzquierdoTraseroFisico" type="Node2D"]
+physics_interpolation_mode = 1
+
+[node name="FlipperIzquierdoTraseroFisico2" type="CharacterBody2D" parent="."]
+physics_interpolation_mode = 1
+texture_filter = 3
+disable_mode = 2
+motion_mode = 1
+platform_on_leave = 2
+safe_margin = 0.001
+script = ExtResource("2_0cycm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlipperIzquierdoTraseroFisico2"]
+physics_interpolation_mode = 1
+z_index = 55
+position = Vector2(-5, -0.4)
+shape = SubResource("CircleShape2D_x73pp")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="FlipperIzquierdoTraseroFisico2"]
+physics_interpolation_mode = 1
+z_index = 55
+position = Vector2(41, 8)
+shape = SubResource("CircleShape2D_y3eo6")
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="FlipperIzquierdoTraseroFisico2"]
+physics_interpolation_mode = 1
+z_index = 55
+position = Vector2(19, -1)
+rotation = 1.8724
+scale = Vector2(0.93656, 0.991689)
+shape = SubResource("RectangleShape2D_yoymy")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="FlipperIzquierdoTraseroFisico2"]
+physics_interpolation_mode = 1
+z_index = 35
+position = Vector2(17, 9)
+shape = SubResource("RectangleShape2D_sqv8f")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="FlipperIzquierdoTraseroFisico2"]
+position = Vector2(11.6304, 2.39723)
+rotation = 0.144784
+shape = SubResource("RectangleShape2D_fdk2u")
+
+[node name="Sprite(auxiliar)" type="Sprite2D" parent="FlipperIzquierdoTraseroFisico2"]
+visible = false
+position = Vector2(20, -21)
+texture = ExtResource("1_d60lf")
+offset = Vector2(1.5, 0.5)
+flip_h = true
+hframes = 4
+vframes = 2
+
+[node name="Sprite(traseroSombra)" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.313726)
+texture_filter = 3
+position = Vector2(20, -21)
+texture = ExtResource("2_bxpnl")
+offset = Vector2(1.5, 0.5)
+flip_h = true
+hframes = 4
+vframes = 2
+script = ExtResource("3_bowsa")
