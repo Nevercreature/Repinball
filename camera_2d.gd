@@ -29,3 +29,26 @@ func _seguir_a_la_bola(): #Si la bola va más allá de los límites puestos la c
 			position.y = -125 
 	else:
 		position.y = 125
+
+func sacude_camara():
+	var posicion_actual = position
+	var tiempo_espera = 0.04
+	await get_tree().create_timer(tiempo_espera).timeout 
+	position = Vector2(posicion_actual.x+5,posicion_actual.y+3)
+	await get_tree().create_timer(tiempo_espera).timeout 
+	position = Vector2(posicion_actual.x+4,posicion_actual.y-2)
+	await get_tree().create_timer(tiempo_espera).timeout 
+	position = Vector2(posicion_actual.x,posicion_actual.y)
+	await get_tree().create_timer(tiempo_espera).timeout 
+	position = Vector2(posicion_actual.x-6,posicion_actual.y+3)
+	await get_tree().create_timer(tiempo_espera).timeout 
+	position = Vector2(posicion_actual.x-4,posicion_actual.y-2)
+	await get_tree().create_timer(tiempo_espera).timeout 
+	position = Vector2(posicion_actual.x+2,posicion_actual.y+6)
+	await get_tree().create_timer(tiempo_espera).timeout 
+	position = Vector2(posicion_actual.x-1,posicion_actual.y+6)
+	await get_tree().create_timer(tiempo_espera).timeout 
+	position = Vector2(posicion_actual.x+4,posicion_actual.y+3)
+	await get_tree().create_timer(tiempo_espera).timeout 
+	position = posicion_actual
+	

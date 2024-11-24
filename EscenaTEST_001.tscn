@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b2g2g5qs5u3uq"]
+[gd_scene load_steps=18 format=3 uid="uid://b2g2g5qs5u3uq"]
 
 [ext_resource type="Script" path="res://Scripts/controlador.gd" id="1_oo0au"]
 [ext_resource type="Script" path="res://camera_2d.gd" id="1_qkg2u"]
@@ -12,6 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://xr5nkxp270v6" path="res://FLipperIzq.tscn" id="6_3508n"]
 [ext_resource type="Texture2D" uid="uid://bjplico4lqvd0" path="res://SpritesEImagenes/Ball.PNG" id="9_2qdne"]
 [ext_resource type="PackedScene" uid="uid://cp6dxvnydoowu" path="res://moneda.tscn" id="10_h5ipg"]
+[ext_resource type="Texture2D" uid="uid://dqy7v8ewvq2q1" path="res://SpritesEImagenes/MonedaInterfaz.png" id="12_br58p"]
+[ext_resource type="Texture2D" uid="uid://jhgp83d0ekoe" path="res://SpritesEImagenes/BolaInterfaz.png" id="12_dprqm"]
+[ext_resource type="FontFile" uid="uid://crp7hg5h51f30" path="res://Fuentes/PixelizadaNUMERO (2).ttf" id="13_iew4x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bfxin"]
 size = Vector2(46, 376)
@@ -182,17 +185,21 @@ position = Vector2(48, 48)
 z_index = 55
 y_sort_enabled = true
 texture_filter = 3
-anchors_preset = 2
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 8.0
+offset_left = -188.0
 offset_top = -32.0
-offset_right = 168.0
+offset_right = -28.0
+grow_horizontal = 0
 grow_vertical = 0
-pivot_offset = Vector2(-8, 32)
+pivot_offset = Vector2(188, 32)
 theme_override_fonts/font = ExtResource("3_ueaf0")
 theme_override_font_sizes/font_size = 32
-text = "00"
+text = "000.000.000"
+horizontal_alignment = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="PuntosSombra" type="Label" parent="CanvasLayer/Puntos"]
@@ -261,6 +268,44 @@ theme_override_fonts/font = ExtResource("3_ueaf0")
 theme_override_font_sizes/font_size = 32
 text = "00"
 
+[node name="MonedaInterfaz" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -33.0
+offset_top = -34.0
+offset_right = 7.0
+offset_bottom = 6.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.87, 0.87)
+texture = ExtResource("12_br58p")
+
+[node name="BolaInterfaz" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -34.0
+offset_right = 32.0
+offset_bottom = -4.0
+grow_vertical = 0
+texture = ExtResource("12_dprqm")
+
+[node name="NumBolas" type="Label" parent="CanvasLayer/BolaInterfaz"]
+layout_mode = 0
+offset_left = 34.405
+offset_top = 8.0
+offset_right = 74.405
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("13_iew4x")
+text = "00"
+
 [node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
 z_index = 65
 script = ExtResource("1_qkg2u")

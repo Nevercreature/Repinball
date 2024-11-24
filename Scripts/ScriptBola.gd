@@ -4,10 +4,13 @@ extends RigidBody2D
 var y_limit = 500 #Límite que si se sobrepasa se pierde bola
 var velicidad_limite = 1160 #La velocidad límite a la que puede ir la bola
 var gravedad = 0.5 #La gravedad a la que le afecta la bola.
+var camara
 
 func _ready():
 	# Activa el _physics_process si es necesario
 	set_physics_process(true)
+	camara = get_node("%Camera2D")
+	print("Camara 2D: ", camara)
 
 func _fixed_process(delta):
 	pass
@@ -43,7 +46,12 @@ func teletransportar_a(nueva_posicion: Vector2):
 	global_position.x = nueva_posicion.x
 	linear_velocity = Vector2.ZERO
 	gravity_scale = 0
-	await get_tree().create_timer(0.5).timeout
+	
+	camara.sacude_camara()
+	
+	await get_tree().create_timer(1).timeout #await get_tree().create_timer(0.5).timeout
 	gravity_scale = gravedad
 	freeze = false
 	visible = true
+
+	
