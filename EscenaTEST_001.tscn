@@ -137,7 +137,7 @@ action = "ui_left"
 [node name="ButtonDer" type="TouchScreenButton" parent="Control"]
 unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
-position = Vector2(5, -484)
+position = Vector2(4.76837e-07, -480)
 scale = Vector2(37.5476, 46)
 texture_normal = ExtResource("9_2qdne")
 passby_press = true
@@ -206,11 +206,16 @@ metadata/_edit_use_anchors_ = true
 self_modulate = Color(0, 0, 0, 1)
 z_index = -1
 texture_filter = 3
-layout_mode = 0
-offset_left = -1.0
-offset_right = 159.0
-offset_bottom = 32.0
-pivot_offset = Vector2(-8, 32)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.2
+anchor_top = 1.0
+anchor_right = 1.2
+anchor_bottom = 1.0
+offset_left = -193.0
+offset_top = -32.0
+offset_right = -33.0
+pivot_offset = Vector2(188, 32)
 theme_override_fonts/font = ExtResource("3_ueaf0")
 theme_override_font_sizes/font_size = 32
 text = "00"
@@ -223,7 +228,7 @@ layout_mode = 0
 offset_left = 1.0
 offset_right = 161.0
 offset_bottom = 32.0
-pivot_offset = Vector2(-8, 32)
+pivot_offset = Vector2(188, 32)
 theme_override_fonts/font = ExtResource("3_ueaf0")
 theme_override_font_sizes/font_size = 32
 text = "00"
@@ -236,7 +241,7 @@ layout_mode = 0
 offset_top = -1.0
 offset_right = 160.0
 offset_bottom = 31.0
-pivot_offset = Vector2(-8, 32)
+pivot_offset = Vector2(188, 32)
 theme_override_fonts/font = ExtResource("3_ueaf0")
 theme_override_font_sizes/font_size = 32
 text = "00"
@@ -249,7 +254,7 @@ layout_mode = 0
 offset_top = 1.0
 offset_right = 160.0
 offset_bottom = 33.0
-pivot_offset = Vector2(-8, 32)
+pivot_offset = Vector2(188, 32)
 theme_override_fonts/font = ExtResource("3_ueaf0")
 theme_override_font_sizes/font_size = 32
 text = "00"
@@ -263,7 +268,7 @@ offset_left = 3.0
 offset_top = 3.0
 offset_right = 163.0
 offset_bottom = 35.0
-pivot_offset = Vector2(-8, 32)
+pivot_offset = Vector2(188, 32)
 theme_override_fonts/font = ExtResource("3_ueaf0")
 theme_override_font_sizes/font_size = 32
 text = "00"
@@ -275,13 +280,13 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -33.0
-offset_top = -34.0
-offset_right = 7.0
-offset_bottom = 6.0
+offset_left = -36.0
+offset_top = -40.0
+offset_right = 4.0
 grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(0.87, 0.87)
+pivot_offset = Vector2(36, 40)
 texture = ExtResource("12_br58p")
 
 [node name="BolaInterfaz" type="TextureRect" parent="CanvasLayer"]
@@ -294,14 +299,68 @@ offset_top = -34.0
 offset_right = 32.0
 offset_bottom = -4.0
 grow_vertical = 0
+pivot_offset = Vector2(-2, 33.98)
 texture = ExtResource("12_dprqm")
 
 [node name="NumBolas" type="Label" parent="CanvasLayer/BolaInterfaz"]
+z_index = 1
 layout_mode = 0
 offset_left = 34.405
 offset_top = 8.0
 offset_right = 74.405
 offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("13_iew4x")
+text = "00"
+
+[node name="NumBolasSombra" type="Label" parent="CanvasLayer/BolaInterfaz/NumBolas"]
+self_modulate = Color(0, 0, 0, 1)
+z_index = -6
+layout_mode = 0
+offset_left = -1.0
+offset_right = 39.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("13_iew4x")
+text = "00"
+
+[node name="NumBolasSombra2" type="Label" parent="CanvasLayer/BolaInterfaz/NumBolas"]
+self_modulate = Color(0, 0, 0, 1)
+z_index = -7
+layout_mode = 0
+offset_left = 1.0
+offset_right = 41.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("13_iew4x")
+text = "00"
+
+[node name="NumBolasSombra3" type="Label" parent="CanvasLayer/BolaInterfaz/NumBolas"]
+self_modulate = Color(0, 0, 0, 1)
+z_index = -8
+layout_mode = 0
+offset_top = -1.0
+offset_right = 40.0
+offset_bottom = 22.0
+theme_override_fonts/font = ExtResource("13_iew4x")
+text = "00"
+
+[node name="NumBolasSombra4" type="Label" parent="CanvasLayer/BolaInterfaz/NumBolas"]
+self_modulate = Color(0, 0, 0, 1)
+z_index = -9
+layout_mode = 0
+offset_top = 1.0
+offset_right = 40.0
+offset_bottom = 24.0
+theme_override_fonts/font = ExtResource("13_iew4x")
+text = "00"
+
+[node name="NumBolasSombra5" type="Label" parent="CanvasLayer/BolaInterfaz/NumBolas"]
+self_modulate = Color(0, 0, 0, 1)
+z_index = -10
+y_sort_enabled = true
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 43.0
+offset_bottom = 26.0
 theme_override_fonts/font = ExtResource("13_iew4x")
 text = "00"
 

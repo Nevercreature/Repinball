@@ -3,7 +3,7 @@ extends Node2D
 # Variables para los ángulos (en radianes)
 var target_angle = deg_to_rad(-63)  # Ángulo objetivo al presionar el botón ¡OJO AL DATO! el recorrido total va de 0 a -1.1
 var original_angle = deg_to_rad(0)  # Ángulo original (0 radianes)
-var rotation_speed = 28   # Velocidad de rotación
+var rotation_speed = 26   # Velocidad de rotación
 var rotating = false # Si está rotando o no
 var boton_izquierdo
 #--------------------------------------------------------------------------------------------------------------------	

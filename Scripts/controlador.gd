@@ -10,6 +10,9 @@ var nodo_puntos_sombra3
 var nodo_puntos_sombra4
 var nodo_puntos_sombra5
 
+var nodo_sprite_bola
+var nodo_sprite_moneda
+
 var canvas_layer
 
 var valor_zoom: int
@@ -24,6 +27,9 @@ func _ready() -> void:
 	nodo_puntos_sombra3 = get_node("../CanvasLayer/Puntos/PuntosSombra3")
 	nodo_puntos_sombra4 = get_node("../CanvasLayer/Puntos/PuntosSombra4")
 	nodo_puntos_sombra5 = get_node("../CanvasLayer/Puntos/PuntosSombra5")
+	
+	nodo_sprite_bola = get_node("../CanvasLayer/BolaInterfaz")
+	nodo_sprite_moneda = get_node("../CanvasLayer/MonedaInterfaz")
 
 	canvas_layer = get_node("../CanvasLayer")
 
@@ -44,32 +50,16 @@ func _process(delta: float) -> void:
 	nodo_puntos_sombra4.text = puntos_string
 	nodo_puntos_sombra5.text = puntos_string
 	
-	'''
-	#nodo_puntos.control.layout.transform.scale.x = valor_zoom
-	print("Canvas Layer scale: ", canvas_layer.scale)
-	print("El viewpor entre 360", (get_viewport().size.y / 360))
-	print("valor zoom: ", valor_zoom)
-	#nodo_puntos.font.size = valor_zoom * 32
-	#var zoom_valor_int = valor_zoom.to_int()
-	#canvas_layer.set_scale(Vector2(valor_zoom, valor_zoom))
-	'''
+	
 	
 	nodo_puntos.scale.y = valor_zoom
 	nodo_puntos.scale.x = valor_zoom
 
-	'''
-	nodo_puntos_sombra.scale.y = valor_zoom
-	nodo_puntos_sombra.scale.x = valor_zoom
+	nodo_sprite_bola.scale.x = valor_zoom
+	nodo_sprite_bola.scale.y = valor_zoom
 	
-	nodo_puntos_sombra2.scale.y = valor_zoom
-	nodo_puntos_sombra2.scale.x = valor_zoom
-	
-	nodo_puntos_sombra3.scale.y = valor_zoom
-	nodo_puntos_sombra3.scale.x = valor_zoom
-	
-	nodo_puntos_sombra4.scale.y = valor_zoom
-	nodo_puntos_sombra4.scale.x = valor_zoom
-	'''
+	nodo_sprite_moneda.scale.x = valor_zoom
+	nodo_sprite_moneda.scale.y = valor_zoom
 	
 	
 	
