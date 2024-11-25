@@ -5,13 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://bm4kwwkirshft" path="res://SpritesEImagenes/Background_000.PNG" id="1_t2ft1"]
 [ext_resource type="Texture2D" uid="uid://lolh22xcckyx" path="res://SpritesEImagenes/Foreground_001.png" id="2_8ty5o"]
 [ext_resource type="Texture2D" uid="uid://3a8mk86f3bpl" path="res://SpritesEImagenes/Flippers_back.PNG" id="3_jojq8"]
-[ext_resource type="FontFile" uid="uid://c7rqtbmpr30o1" path="res://Fuentes/PixelizadaNumpeq.ttf" id="3_ueaf0"]
 [ext_resource type="PhysicsMaterial" uid="uid://pg8xofhxdbpf" path="res://Materiales/MaterialBola.tres" id="3_xnwj3"]
 [ext_resource type="PackedScene" uid="uid://c6oopqspos50b" path="res://Bola.tscn" id="4_dibcs"]
 [ext_resource type="Texture2D" uid="uid://0m23qcwv2kts" path="res://SpritesEImagenes/Flippers_front.PNG" id="4_s8e72"]
 [ext_resource type="PackedScene" uid="uid://xr5nkxp270v6" path="res://FLipperIzq.tscn" id="6_3508n"]
 [ext_resource type="Texture2D" uid="uid://bjplico4lqvd0" path="res://SpritesEImagenes/Ball.PNG" id="9_2qdne"]
 [ext_resource type="PackedScene" uid="uid://cp6dxvnydoowu" path="res://moneda.tscn" id="10_h5ipg"]
+[ext_resource type="FontFile" uid="uid://bulxv5pcbs8k4" path="res://Fuentes/Pixelizada0limpi.ttf" id="11_uj6mw"]
 [ext_resource type="Texture2D" uid="uid://dqy7v8ewvq2q1" path="res://SpritesEImagenes/MonedaInterfaz.png" id="12_br58p"]
 [ext_resource type="Texture2D" uid="uid://jhgp83d0ekoe" path="res://SpritesEImagenes/BolaInterfaz.png" id="12_dprqm"]
 [ext_resource type="FontFile" uid="uid://crp7hg5h51f30" path="res://Fuentes/PixelizadaNUMERO (2).ttf" id="13_iew4x"]
@@ -179,10 +179,29 @@ position = Vector2(16, 48)
 [node name="Moneda_12" parent="." instance=ExtResource("10_h5ipg")]
 position = Vector2(48, 48)
 
+[node name="Moneda_13" parent="." instance=ExtResource("10_h5ipg")]
+position = Vector2(-80, -16)
+
+[node name="Moneda_14" parent="." instance=ExtResource("10_h5ipg")]
+position = Vector2(-80, 16)
+
+[node name="Moneda_15" parent="." instance=ExtResource("10_h5ipg")]
+position = Vector2(-80, 48)
+
+[node name="Moneda_16" parent="." instance=ExtResource("10_h5ipg")]
+position = Vector2(80, -16)
+
+[node name="Moneda_17" parent="." instance=ExtResource("10_h5ipg")]
+position = Vector2(80, 16)
+
+[node name="Moneda_18" parent="." instance=ExtResource("10_h5ipg")]
+position = Vector2(80, 48)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Puntos" type="Label" parent="CanvasLayer"]
 z_index = 55
+z_as_relative = false
 y_sort_enabled = true
 texture_filter = 3
 anchors_preset = 3
@@ -190,88 +209,134 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -188.0
-offset_top = -32.0
-offset_right = -28.0
+offset_left = -183.0
+offset_top = -18.0
+offset_right = -23.0
+offset_bottom = 14.0
 grow_horizontal = 0
 grow_vertical = 0
-pivot_offset = Vector2(188, 32)
-theme_override_fonts/font = ExtResource("3_ueaf0")
-theme_override_font_sizes/font_size = 32
-text = "000.000.000"
+pivot_offset = Vector2(183, 18)
+theme_override_fonts/font = ExtResource("11_uj6mw")
+theme_override_font_sizes/font_size = 16
+text = "000.001.200"
 horizontal_alignment = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="PuntosSombra" type="Label" parent="CanvasLayer/Puntos"]
 self_modulate = Color(0, 0, 0, 1)
-z_index = -1
+z_index = -65
+z_as_relative = false
+y_sort_enabled = true
 texture_filter = 3
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.2
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
-anchor_right = 1.2
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -193.0
+offset_left = -159.0
 offset_top = -32.0
-offset_right = -33.0
-pivot_offset = Vector2(188, 32)
-theme_override_fonts/font = ExtResource("3_ueaf0")
-theme_override_font_sizes/font_size = 32
-text = "00"
+offset_right = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("11_uj6mw")
+theme_override_font_sizes/font_size = 16
+text = "000.001.200"
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="PuntosSombra2" type="Label" parent="CanvasLayer/Puntos"]
 self_modulate = Color(0, 0, 0, 1)
-z_index = -1
+z_index = -65
+z_as_relative = false
+y_sort_enabled = true
 texture_filter = 3
-layout_mode = 0
-offset_left = 1.0
-offset_right = 161.0
-offset_bottom = 32.0
-pivot_offset = Vector2(188, 32)
-theme_override_fonts/font = ExtResource("3_ueaf0")
-theme_override_font_sizes/font_size = 32
-text = "00"
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -161.0
+offset_top = -32.0
+offset_right = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("11_uj6mw")
+theme_override_font_sizes/font_size = 16
+text = "000.001.200"
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="PuntosSombra3" type="Label" parent="CanvasLayer/Puntos"]
 self_modulate = Color(0, 0, 0, 1)
-z_index = -1
+z_index = -65
+z_as_relative = false
+y_sort_enabled = true
 texture_filter = 3
-layout_mode = 0
-offset_top = -1.0
-offset_right = 160.0
-offset_bottom = 31.0
-pivot_offset = Vector2(188, 32)
-theme_override_fonts/font = ExtResource("3_ueaf0")
-theme_override_font_sizes/font_size = 32
-text = "00"
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -33.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("11_uj6mw")
+theme_override_font_sizes/font_size = 16
+text = "000.001.200"
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="PuntosSombra4" type="Label" parent="CanvasLayer/Puntos"]
 self_modulate = Color(0, 0, 0, 1)
-z_index = -1
+z_index = -65
+z_as_relative = false
+y_sort_enabled = true
 texture_filter = 3
-layout_mode = 0
-offset_top = 1.0
-offset_right = 160.0
-offset_bottom = 33.0
-pivot_offset = Vector2(188, 32)
-theme_override_fonts/font = ExtResource("3_ueaf0")
-theme_override_font_sizes/font_size = 32
-text = "00"
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -31.0
+offset_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("11_uj6mw")
+theme_override_font_sizes/font_size = 16
+text = "000.001.200"
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="PuntosSombra5" type="Label" parent="CanvasLayer/Puntos"]
 self_modulate = Color(0, 0, 0, 1)
-z_index = -1
+z_index = -65
+z_as_relative = false
+y_sort_enabled = true
 texture_filter = 3
-layout_mode = 0
-offset_left = 3.0
-offset_top = 3.0
-offset_right = 163.0
-offset_bottom = 35.0
-pivot_offset = Vector2(188, 32)
-theme_override_fonts/font = ExtResource("3_ueaf0")
-theme_override_font_sizes/font_size = 32
-text = "00"
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -158.0
+offset_top = -30.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("11_uj6mw")
+theme_override_font_sizes/font_size = 16
+text = "000.001.200"
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="MonedaInterfaz" type="TextureRect" parent="CanvasLayer"]
 texture_filter = 3
@@ -280,13 +345,13 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -36.0
-offset_top = -40.0
+offset_left = -28.0
+offset_top = -30.0
 offset_right = 4.0
+offset_bottom = 2.0
 grow_horizontal = 0
 grow_vertical = 0
-scale = Vector2(0.87, 0.87)
-pivot_offset = Vector2(36, 40)
+pivot_offset = Vector2(28, 30)
 texture = ExtResource("12_br58p")
 
 [node name="BolaInterfaz" type="TextureRect" parent="CanvasLayer"]
