@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b2g2g5qs5u3uq"]
+[gd_scene load_steps=29 format=3 uid="uid://b2g2g5qs5u3uq"]
 
 [ext_resource type="Script" path="res://Scripts/controlador.gd" id="1_oo0au"]
 [ext_resource type="Script" path="res://camera_2d.gd" id="1_qkg2u"]
@@ -15,6 +15,10 @@
 [ext_resource type="Texture2D" uid="uid://dqy7v8ewvq2q1" path="res://SpritesEImagenes/MonedaInterfaz.png" id="12_br58p"]
 [ext_resource type="Texture2D" uid="uid://jhgp83d0ekoe" path="res://SpritesEImagenes/BolaInterfaz.png" id="12_dprqm"]
 [ext_resource type="FontFile" uid="uid://crp7hg5h51f30" path="res://Fuentes/PixelizadaNUMERO (2).ttf" id="13_iew4x"]
+[ext_resource type="Texture2D" uid="uid://dn6j0tpdi8d0l" path="res://SpritesEImagenes/Panel_tactil_despliegue.png" id="16_vppab"]
+[ext_resource type="Script" path="res://Scripts/panel_tactil.gd" id="17_gb88t"]
+[ext_resource type="Texture2D" uid="uid://cfyki8isyo7il" path="res://SpritesEImagenes/DedoTactil.png" id="18_7hbk3"]
+[ext_resource type="Script" path="res://Scripts/dedo_sombra.gd" id="19_b8cp1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bfxin"]
 size = Vector2(46, 376)
@@ -24,9 +28,60 @@ resource_local_to_scene = true
 friction = 0.02
 bounce = 0.2
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_fupwm"]
+atlas = ExtResource("18_7hbk3")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8jyf"]
+atlas = ExtResource("18_7hbk3")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxqgy"]
+atlas = ExtResource("18_7hbk3")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1t3b"]
+atlas = ExtResource("18_7hbk3")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iis4u"]
+atlas = ExtResource("18_7hbk3")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0son4"]
+atlas = ExtResource("18_7hbk3")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1qykj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fupwm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8jyf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxqgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1t3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iis4u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0son4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
 [node name="Node2D" type="Node"]
 
 [node name="Controlador" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("1_oo0au")
 
 [node name="Pinball" type="Node2D" parent="."]
@@ -142,6 +197,24 @@ scale = Vector2(37.5476, 46)
 texture_normal = ExtResource("9_2qdne")
 passby_press = true
 action = "ui_right"
+
+[node name="ButtonIzqLanzar" type="TouchScreenButton" parent="Control"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(-232, 120)
+scale = Vector2(2.66667, 3.80952)
+texture_normal = ExtResource("9_2qdne")
+passby_press = true
+action = "L1"
+
+[node name="ButtonDerLanzar" type="TouchScreenButton" parent="Control"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(97.69, 120)
+scale = Vector2(2.66667, 3.80952)
+texture_normal = ExtResource("9_2qdne")
+passby_press = true
+action = "R1"
 
 [node name="Moneda_01" parent="." instance=ExtResource("10_h5ipg")]
 position = Vector2(-48, -16)
@@ -433,3 +506,62 @@ text = "00"
 unique_name_in_owner = true
 z_index = 65
 script = ExtResource("1_qkg2u")
+
+[node name="PanelSoltarBola" type="Node2D" parent="."]
+unique_name_in_owner = true
+process_mode = 1
+
+[node name="PanelTactilIzq" type="Sprite2D" parent="PanelSoltarBola"]
+self_modulate = Color(0, 0, 1, 0.345098)
+texture_filter = 3
+position = Vector2(-176, 168)
+texture = ExtResource("16_vppab")
+script = ExtResource("17_gb88t")
+
+[node name="PanelTactilDer" type="Sprite2D" parent="PanelSoltarBola"]
+self_modulate = Color(0, 0, 1, 0.345098)
+texture_filter = 3
+position = Vector2(176, 168)
+texture = ExtResource("16_vppab")
+flip_h = true
+script = ExtResource("17_gb88t")
+
+[node name="DedoIzq" type="AnimatedSprite2D" parent="PanelSoltarBola"]
+z_index = 150
+texture_filter = 3
+position = Vector2(-176, 104)
+sprite_frames = SubResource("SpriteFrames_1qykj")
+autoplay = "default"
+frame = 1
+frame_progress = 0.137289
+
+[node name="DedoIzqSombra" type="AnimatedSprite2D" parent="PanelSoltarBola/DedoIzq"]
+self_modulate = Color(0, 0, 0, 0.313726)
+z_index = -15
+texture_filter = 3
+position = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_1qykj")
+autoplay = "default"
+frame = 1
+frame_progress = 0.137289
+script = ExtResource("19_b8cp1")
+
+[node name="DedoIzq2" type="AnimatedSprite2D" parent="PanelSoltarBola"]
+z_index = 150
+texture_filter = 3
+position = Vector2(176, 104)
+sprite_frames = SubResource("SpriteFrames_1qykj")
+autoplay = "default"
+frame = 1
+frame_progress = 0.137289
+
+[node name="DedoIzqSombra" type="AnimatedSprite2D" parent="PanelSoltarBola/DedoIzq2"]
+self_modulate = Color(0, 0, 0, 0.313726)
+z_index = -15
+texture_filter = 3
+position = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_1qykj")
+autoplay = "default"
+frame = 1
+frame_progress = 0.137289
+script = ExtResource("19_b8cp1")
