@@ -8,20 +8,27 @@ var camara
 var nodo_controlador
 var panel_soltar_bola
 
+var botonL1
+var botonR1
+var primeraBola = true
+var dormida = true
+
 func _ready():
 	# Activa el _physics_process si es necesario
 	set_physics_process(true)
 	camara = get_node("%Camera2D")
-	print("Camara 2D: ", camara)
+	#print("Camara 2D: ", camara)
 	panel_soltar_bola = get_node("%PanelSoltarBola")
 	nodo_controlador = get_node("%Controlador")
+	botonL1 = get_node("%ButtonIzqLanzar")
+	botonR1 = get_node("%ButtonDerLanzar")
 
 func _fixed_process(delta):
 	pass
 
 func _process(delta):
-	if position.y > y_limit and visible == true:
-		teletransportar_a()
+	if global_position.y > y_limit and visible == true and dormida == false and primeraBola == false:
+		muerte()
 	# Comprueba la magnitud de la velocidad
 	if linear_velocity.length() > velicidad_limite:
 		# Limita la velocidad manteniendo la dirección original
@@ -42,12 +49,12 @@ func _process(delta):
 		apply_force(Vector2(0, 0), Vector2.ZERO)
 		
 
-func teletransportar_a():
+func muerte():
 	# Cambiamos el estado de "sleeping" para evitar que se quede congelado. Y que no sea visible mientras se transporta
-	#freeze = true
-	visible = false
-	#global_position.y = nueva_posicion.y
-	#global_position.x = nueva_posicion.x
+
+	
+	freeze = true
+	dormida = true
 	linear_velocity = Vector2.ZERO
 	gravity_scale = 0
 	
@@ -56,10 +63,8 @@ func teletransportar_a():
 		#panel_soltar_bola.freeze = false
 		await get_tree().create_timer(2.1).timeout #await get_tree().create_timer(0.5).timeout
 		panel_soltar_bola.visible = true
-	####################################################################### Esto es el reseteo de la bola
-	#await get_tree().create_timer(1).timeout #await get_tree().create_timer(0.5).timeout
-	#gravity_scale = gravedad
-	#freeze = false
-	#visible = true
-	####################################################################
+		botonL1.visible = true
+		botonR1.visible = true
+	
+		
 	

@@ -53,6 +53,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 
+	#print("Bola: X: ",bola.global_position.x,". Y: ",bola.global_position.y)
+	
 	if round(get_viewport().size.y / 360) > 1:
 		valor_zoom = round(get_viewport().size.y / 360)
 	else:
@@ -115,24 +117,35 @@ func formatea_numeros_con_ceros(number: int) -> String:
 func teletransportar_bola(nueva_posicion: Vector2):
 	# Cambiamos el estado de "sleeping" para evitar que se quede congelado. Y que no sea visible mientras se transporta
 	#bola.visible = true
-	bola.global_position.y = nueva_posicion.y #bola.global_position.y = nueva_posicion.y
-	bola.global_position.x = nueva_posicion.x #bola.global_position.x = nueva_posicion.x
+	#bola.freeze = false
 
+	#bola.global_position.y = nueva_posicion.y #bola.global_position.y = nueva_posicion.y
+	#bola.global_position.x = nueva_posicion.x #bola.global_position.x = nueva_posicion.x
+	bola.global_position = nueva_posicion
+
+	await get_tree().create_timer(0.1).timeout 
 
 	####################################################################### Esto es el reseteo de la bola
 	#await get_tree().create_timer(1).timeout #await get_tree().create_timer(0.5).timeout
-	bola.gravity_scale = bola.gravedad
+	
 	#bola.freeze = false
-	bola.visible = true
+	
+	bola.primeraBola = false
+	bola.dormida = false
+	bola.freeze = false
+	bola.gravity_scale = bola.gravedad
 	####################################################################
+	bola.visible = true
 
 func _input(event):
 	if event.is_action_pressed("L1"):
 		teletransportar_bola(Vector2(-180.5,140))
 		#panel_soltar_bola.freeze = true
 		panel_soltar_bola.visible = false
+		botonL1.visible = false
 
 	if event.is_action_pressed("R1"):
 		teletransportar_bola(Vector2(+180.5,140))
 		#panel_soltar_bola.freeze = true
 		panel_soltar_bola.visible = false
+		botonR1.visible = false

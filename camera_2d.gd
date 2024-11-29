@@ -1,9 +1,10 @@
 extends Camera2D
 
-
+var panel004
 
 func _ready() -> void:
 	_ajustar_Zoom_pixel_perfect() 
+	panel004 = get_node("/root/Node2D/Pinball/Paredes/ParedesSprite/Panel004")
 #---------------------------------------------------------------------------------------------------------------------
 func _process(delta: float) -> void:
 	
@@ -47,6 +48,8 @@ func _seguir_a_la_bola(): #Si la bola va más allá de los límites puestos la c
 		position.y = 125
 
 func sacude_camara():
+	if panel004 != null:
+		panel004.play("Sobrecalentamiento")
 	var posicion_actual = position
 	var tiempo_espera = 0.04
 	await get_tree().create_timer(tiempo_espera).timeout 
